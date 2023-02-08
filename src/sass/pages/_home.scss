@@ -1,3 +1,52 @@
 /* ********* */
 /* @HOME */
 /* ********* */
+body {
+  background-color: rgb(209, 209, 209);
+}
+
+.contenedor {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, auto);
+}
+
+.titulo {
+  text-align: center;
+  grid-column: 1/4;
+}
+
+@each $color, $FondoPolaroid in $colores {
+  .polaroid {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+
+    border-top: 10px solid #fff;
+    border-left: 10px solid #fff;
+    border-right: 10px solid #fff;
+
+        //fondo
+        &--#{$color} {
+        background-color: $FondoPolaroid;
+        
+
+            //Texto de las polaroid
+            .texto {
+                background-color: #fff;
+                padding: 5px 0;
+                text-align: center;
+                &::before{
+                    content:"#{$FondoPolaroid}";
+                }
+            }
+        }
+    }
+
+}
+
+figcaption {
+  text-align: center;
+}
